@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Resultaat</title>
+    <link rel="stylesheet" href="../static/styles.css" type="text/css">
+</head>
+<body>
+<h1>Resultaat:</h1>
+<p th:text="'naamOrganisatie: ' + ${activiteitRequest.naamOrganisatie}" />
+<p th:text="'locatie: ' + ${activiteitRequest.locatie}" />
+<p th:text="'naamActiviteit: ' + ${activiteitRequest.naamActiviteit}" />
+<p th:text="'beschrijvingActiviteit: ' + ${activiteitRequest.beschrijvingActiviteit}" />
+<p th:text="'kosten: ' + ${activiteitRequest.kosten}" />
+<p th:text="'leeftijdscategorie: ' + ${activiteitRequest.leeftijdscategorie}" />
+<p th:text="'soortActiviteit: ' + ${activiteitRequest.soortActiviteit}" />
+<p th:text="'website: ' + ${activiteitRequest.website}" />
+</body>
+</html>
