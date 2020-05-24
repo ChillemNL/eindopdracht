@@ -17,13 +17,13 @@ public class CategorieController {
 
 
 
-    @GetMapping("/categorie_opvoeren")
+    @GetMapping("/categorie_toevoegen")
     public String categorieFormulier(Model model) {
         model.addAttribute("categorie", new CategorieRequest());
-        return "categorie_opvoeren";
+        return "categorie_toevoegen";
     }
 
-    @PostMapping("categorie_opvoeren")
+    @PostMapping("categorie_toevoegen")
     public String categorieToevoegen(@ModelAttribute CategorieRequest request) {
         Categorie categorie = new Categorie();
         categorie.setNaamCategorie(request.getNaamCategorie());
