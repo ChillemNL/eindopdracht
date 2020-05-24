@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Categorie opvoeren</title>
+    <link rel="stylesheet" href="../static/styles.css" type="text/css">
+</head>
+<body>
+
+<div class="container">
+    <form action="#" th:action="@{/categorie_opvoeren}" th:object="${categorie}" method="post">
+        <h2>Gegevens Categorie:</h2>
+        <label>Naam categorie:<br />
+            <input type="text" name="naamCategorie" maxlenght="15" th:field="*{naamCategorie}" />
+        </label>
+        <br />
+        <label>Beschrijving Categorie:<br />
+            <input type="text" name="beschrijvingCategorie" maxlenght="20" th:field="*{beschrijvingCategorie}"/>
+        </label>
+        <br />
+        <br />
+        <button type="submit">Toevoegen</button>
+    </form>
+
+</div>
+
+
+</body>
+</html>
