@@ -16,10 +16,14 @@ public class Categorie {
     public Integer getId() {
         return id;
     }
-    public String getNaamCategorie(String naamCategorie) {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNaamCategorie() {
         return this.naamCategorie;
     }
-    public String getBeschrijvingCategorie(String beschrijvingCategorie) {
+    public String getBeschrijvingCategorie() {
         return this.beschrijvingCategorie;
     }
 
@@ -28,6 +32,7 @@ public class Categorie {
     }
     public void setBeschrijvingCategorie(String beschrijvingCategorie) { this.beschrijvingCategorie = beschrijvingCategorie;
     }
+
 
 }
 
