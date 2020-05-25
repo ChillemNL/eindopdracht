@@ -19,6 +19,7 @@ public class Activiteit {
     private String soortActiviteit;
     private String website;
 
+
     public Integer getId() {
         return id;
     }
