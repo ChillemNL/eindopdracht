@@ -8,7 +8,7 @@
 <body>
 
 <div class="container">
-    <form action="#" th:action="@{/categorie_toevoegen}" th:object="${categorie}" method="post">
+    <form action="#" th:action="@{/categorie/toevoegen}" th:object="${categorie}" method="post">
         <h2>Gegevens Categorie:</h2>
         <label>Naam categorie:<br />
             <input type="text" name="naamCategorie" maxlenght="15" th:field="*{naamCategorie}" />
