@@ -8,7 +8,6 @@ error_reporting(E_ALL);
 
 <?php
 
-	
 function getConnection() {
 
 $servername = "localhost:3307";

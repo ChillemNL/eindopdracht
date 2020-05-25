@@ -6,7 +6,6 @@
 
 	<?php
 
-
 	$conn = getConnection();
 	$param1 = (isset($_GET['id']) ? $_GET['id'] : 0); // default to 0 to include all
 	$param2 =  (isset($_GET['limit']) ? $_GET['limit'] : "0,5"); //"LIMIT 0,24"; //paging support

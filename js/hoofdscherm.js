@@ -20,7 +20,6 @@ for (i = 0; i < acc.length; i++) {
 
 
 
-
 /*
 (function()){
 	var soort = document.getElementById ('activiteit');
