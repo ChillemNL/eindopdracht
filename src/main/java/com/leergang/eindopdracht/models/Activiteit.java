@@ -11,7 +11,10 @@ public class Activiteit {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private String naamOrganisatie;
-    private String locatie;
+    private String adres;
+    private String postcode;
+    private String plaats;
+    private String telefoonnummer;
     private String naamActiviteit;
     private String beschrijvingActiviteit;
     private int kosten;
@@ -31,11 +34,23 @@ public class Activiteit {
         return naamOrganisatie;
     }
 
-    public String getLocatie() {
-        return locatie;
+    public String getAdres() {
+        return adres;
     }
 
-    public String getNaamActiviteit() {
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public String getPlaats() {
+        return plaats;
+    }
+
+    public String getTelefoonnummer() {
+        return telefoonnummer;
+    }
+
+       public String getNaamActiviteit() {
         return naamActiviteit;
     }
 
@@ -63,8 +78,20 @@ public class Activiteit {
         this.naamOrganisatie = naamOrganisatie;
     }
 
-    public void setLocatie(String locatie) {
-        this.locatie = locatie;
+    public void setAdres(String adres) {
+        this.adres = adres;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public void setPlaats(String plaats) {
+        this.plaats = plaats;
+    }
+
+    public void setTelefoonnummer(String telefoonnummer) {
+        this.telefoonnummer = telefoonnummer;
     }
 
     public void setNaamActiviteit(String naamActiviteit) {

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -32,7 +33,10 @@ public class ActiviteitController {
     public String activiteitToevoegen(@ModelAttribute ActiviteitRequest request) {
         Activiteit activiteit = new Activiteit();
         activiteit.setNaamOrganisatie(request.getNaamOrganisatie());
-        activiteit.setLocatie(request.getLocatie());
+        activiteit.setAdres(request.getAdres());
+        activiteit.setPostcode(request.getPostcode());
+        activiteit.setPlaats(request.getPlaats());
+        activiteit.setTelefoonnummer(request.getTelefoonnummer());
         activiteit.setNaamActiviteit(request.getNaamActiviteit());
         activiteit.setBeschrijvingActiviteit(request.getBeschrijvingActiviteit());
         activiteit.setKosten(request.getKosten());
@@ -43,4 +47,14 @@ public class ActiviteitController {
         return "resultaat";
     }
 
+    //@GetMapping("/activiteit_aanpassen/{id}")
+    //public String aanpassenFormulier(Model model, @PathVariable String id) {
+     //   Optional<Activiteit> activiteitRepository.findById(Integer.parseInt(id));
+     //   return "activiteit_aanpassen";
+    //}
+
+    @PostMapping("activiteit_aanpassen")
+    public String activiteitAanpassen(@ModelAttribute ActiviteitRequest request) {
+        return"resultaat";
+    }
 }

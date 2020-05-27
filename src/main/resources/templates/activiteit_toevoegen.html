@@ -9,13 +9,25 @@
 
 <div class="container">
 <form action="#" th:action="@{/activiteit_toevoegen}" th:object="${activiteit}" method="post">
-   <h2>Gegevens activiteit:</h2>
+   <h2>Gegevens van een activiteit:</h2>
     <label>Naam organisatie:<br />
         <input type="text" name="organisatie" maxlenght="15" th:field="*{naamOrganisatie}" />
     </label>
         <br />
-    <label>Locatie:<br />
-        <input type="text" name="locatie" maxlenght="20" th:field="*{locatie}"/>
+    <label>Adres:<br />
+        <input type="text" name="adres" maxlenght="20" th:field="*{adres}" />
+    </label>
+        <br />
+    <label>Postcode:<br />
+        <input type="text" name="postcode" maxlenght="10" th:field="*{postcode}" />
+    </label>
+        <br />
+    <label>Plaats:<br />
+        <input type="text" name="plaats" maxlenght="20" th:field="*{plaats}"/>
+    </label>
+        <br />
+    <label>Telefoonnummer:<br />
+        <input type="text" name="telefoonnummer" maxlenght="15" th:field="*{telefoonnummer}" />
     </label>
         <br />
     <label>Naam activiteit:<br />
