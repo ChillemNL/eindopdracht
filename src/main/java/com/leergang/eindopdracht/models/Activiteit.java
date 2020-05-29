@@ -93,6 +93,3 @@ public class Activiteit {
     }
 }
 
-/*
-    Test commentaar
-*/
