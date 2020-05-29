@@ -9,13 +9,25 @@
 
 <div class="container">
 <form action="#" th:action="@{/activiteit_toevoegen}" th:object="${activiteit}" method="post">
-   <h2>Gegevens activiteit:</h2>
+   <h2>Gegevens van een activiteit:</h2>
     <label>Naam organisatie:<br />
         <input type="text" name="organisatie" maxlenght="15" th:field="*{naamOrganisatie}" />
     </label>
         <br />
-    <label>Locatie:<br />
-        <input type="text" name="locatie" maxlenght="20" th:field="*{locatie}"/>
+    <label>Adres:<br />
+        <input type="text" name="adres" maxlenght="20" th:field="*{adres}" />
+    </label>
+        <br />
+    <label>Postcode:<br />
+        <input type="text" name="postcode" maxlenght="10" th:field="*{postcode}" />
+    </label>
+        <br />
+    <label>Plaats:<br />
+        <input type="text" name="plaats" maxlenght="20" th:field="*{plaats}"/>
+    </label>
+        <br />
+    <label>Telefoonnummer:<br />
+        <input type="text" name="telefoonnummer" maxlenght="15" th:field="*{telefoonnummer}" />
     </label>
         <br />
     <label>Naam activiteit:<br />
@@ -41,44 +53,11 @@
     <label>Website:<br />
         <input type="url" name="website" th:field="*{website}" />
     </label>
-    <br />
-    <label>Categorie:<br />
-        <select id="categorie" name="categorie">
-            <option selected="selected" value="0"></option>
-        </select>
-    </label>
         <br />
         <br />
     <button type="submit">Toevoegen</button>
 </form>
 </div>
 
-<script>
-
-var request = new XMLHttpRequest()
-
-request.open('GET', 'http://localhost:8888/categorie/all', true)
-request.onload = function() {
-  // Begin accessing JSON data here
-  var data = JSON.parse(this.response)
-
-  var element = document.getElementById("categorie");
-
-
-  if (request.status >= 200 && request.status < 400) {
-    data.forEach(categorie => {
-      console.log(categorie.id + "-" + categorie.naamCategorie);
-      var option = document.createElement("option");
-      option.value = categorie.id;
-      option.text = categorie.naamCategorie;
-      element.add(option);
-    })
-  } else {
-    console.log('error')
-  }
-}
-
-request.send()
-</script>
 </body>
 </html>

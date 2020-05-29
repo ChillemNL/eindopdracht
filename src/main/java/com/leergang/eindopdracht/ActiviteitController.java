@@ -1,19 +1,15 @@
 package com.leergang.eindopdracht;
 
 import com.leergang.eindopdracht.models.Activiteit;
-import com.leergang.eindopdracht.models.Categorie;
-
 import com.leergang.eindopdracht.repositories.ActiviteitRepository;
-import com.leergang.eindopdracht.repositories.CategorieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -37,7 +33,10 @@ public class ActiviteitController {
     public String activiteitToevoegen(@ModelAttribute ActiviteitRequest request) {
         Activiteit activiteit = new Activiteit();
         activiteit.setNaamOrganisatie(request.getNaamOrganisatie());
-        activiteit.setLocatie(request.getLocatie());
+        activiteit.setAdres(request.getAdres());
+        activiteit.setPostcode(request.getPostcode());
+        activiteit.setPlaats(request.getPlaats());
+        activiteit.setTelefoonnummer(request.getTelefoonnummer());
         activiteit.setNaamActiviteit(request.getNaamActiviteit());
         activiteit.setBeschrijvingActiviteit(request.getBeschrijvingActiviteit());
         activiteit.setKosten(request.getKosten());
@@ -48,10 +47,14 @@ public class ActiviteitController {
         return "resultaat";
     }
 
-    @GetMapping("/activiteit_ophalen")
-    public @ResponseBody Iterable<Activiteit> getAllActivities() {
-        return activiteitRepository.findAll();
+    //@GetMapping("/activiteit_aanpassen/{id}")
+    //public String aanpassenFormulier(Model model, @PathVariable String id) {
+     //   Optional<Activiteit> activiteitRepository.findById(Integer.parseInt(id));
+     //   return "activiteit_aanpassen";
+    //}
+
+    @PostMapping("activiteit_aanpassen")
+    public String activiteitAanpassen(@ModelAttribute ActiviteitRequest request) {
+        return"resultaat";
     }
-
-
 }
