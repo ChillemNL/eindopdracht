@@ -1,8 +1,10 @@
 package com.leergang.eindopdracht;
 
 public class ActiviteitRequest {
+    private Integer categorieId;
     private String naamOrganisatie;
-    private String locatie;
+    private String plaats;
+    private String regio;
     private String naamActiviteit;
     private String beschrijvingActiviteit;
     private int kosten;
@@ -10,12 +12,18 @@ public class ActiviteitRequest {
     private String soortActiviteit;
     private String website;
 
+    public Integer getCategorieId(){return categorieId;}
+
     public String getNaamOrganisatie() {
         return naamOrganisatie;
     }
 
-    public String getLocatie() {
-        return locatie;
+    public String getPlaats() {
+        return plaats;
+    }
+
+    public String getRegio() {
+        return regio;
     }
 
     public String getNaamActiviteit() {
@@ -42,12 +50,18 @@ public class ActiviteitRequest {
         return website;
     }
 
+    public void setCategorieId(Integer categorieId){this.categorieId = categorieId;}
+
     public void setNaamOrganisatie(String naamOrganisatie) {
         this.naamOrganisatie = naamOrganisatie;
     }
 
-    public void setLocatie(String locatie) {
-        this.locatie = locatie;
+    public void setPlaats(String plaats) {
+        this.plaats = plaats;
+    }
+
+    public void setRegio(String regio) {
+        this.regio = regio;
     }
 
     public void setNaamActiviteit(String naamActiviteit) {

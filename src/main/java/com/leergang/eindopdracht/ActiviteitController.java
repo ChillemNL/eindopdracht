@@ -36,8 +36,10 @@ public class ActiviteitController {
     @PostMapping("activiteit_toevoegen")
     public String activiteitToevoegen(@ModelAttribute ActiviteitRequest request) {
         Activiteit activiteit = new Activiteit();
+        activiteit.setCategorieId(request.getCategorieId());
         activiteit.setNaamOrganisatie(request.getNaamOrganisatie());
-        activiteit.setLocatie(request.getLocatie());
+        activiteit.setPlaats(request.getPlaats());
+        activiteit.setRegio(request.getRegio());
         activiteit.setNaamActiviteit(request.getNaamActiviteit());
         activiteit.setBeschrijvingActiviteit(request.getBeschrijvingActiviteit());
         activiteit.setKosten(request.getKosten());

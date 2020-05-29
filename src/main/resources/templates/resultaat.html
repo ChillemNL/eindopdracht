@@ -7,8 +7,10 @@
 </head>
 <body>
 <h1>Resultaat:</h1>
+<p th:text="'categorieId: ' + ${activiteitRequest.categorieId}" />
 <p th:text="'naamOrganisatie: ' + ${activiteitRequest.naamOrganisatie}" />
-<p th:text="'locatie: ' + ${activiteitRequest.locatie}" />
+<p th:text="'plaats: ' + ${activiteitRequest.plaats}" />
+<p th:text="'regio: ' + ${activiteitRequest.regio}" />
 <p th:text="'naamActiviteit: ' + ${activiteitRequest.naamActiviteit}" />
 <p th:text="'beschrijvingActiviteit: ' + ${activiteitRequest.beschrijvingActiviteit}" />
 <p th:text="'kosten: ' + ${activiteitRequest.kosten}" />

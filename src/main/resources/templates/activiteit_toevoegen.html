@@ -14,8 +14,17 @@
         <input type="text" name="organisatie" maxlenght="15" th:field="*{naamOrganisatie}" />
     </label>
         <br />
-    <label>Locatie:<br />
-        <input type="text" name="locatie" maxlenght="20" th:field="*{locatie}"/>
+    <label>Plaats:<br />
+        <input type="text" name="plaats" maxlenght="20" th:field="*{plaats}"/>
+    </label>
+    <br />
+    <label>Regio:<br />
+        <select id="regio" name="regio">
+            <option selected="selected" value="Noord">Noord</option>
+            <option value="Midden">Midden</option>
+            <option value="Zuid">Zuid</option>
+        </select>
+        <!--input type="text" name="plaats" maxlenght="20" th:field="*{plaats}"/-->
     </label>
         <br />
     <label>Naam activiteit:<br />
@@ -44,7 +53,7 @@
     <br />
     <label>Categorie:<br />
         <select id="categorie" name="categorie">
-            <option selected="selected" value="0"></option>
+            <!--option selected="selected" value="0"></option-->
         </select>
     </label>
         <br />
