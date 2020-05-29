@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <title>Hoofdscherm activiteiten</title>
    <!-- <link rel="stylesheet" type="text/css" href="static\hoofdscherm.css" />-->
-    <Style>body{font-family: Arial, Verdana, sans-serif;
+    <Style>
+    body{font-family: Arial, Verdana, sans-serif;
 background-color: #ddffd0;}
 
 
 h1{
 text-align: center;
  margin-bottom:-5px;}
+
+
 
  #introductie{
 
@@ -104,6 +107,7 @@ div.accordion-afbeelding img {
 width: 100px;
 height: 50px;
 border: solid black 4px;
+}
 }</Style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
@@ -155,40 +159,11 @@ border: solid black 4px;
 <!--Alles tussen div moet zelfde stijl hebben-->
 
 
-<ul id = "resultaten" class = "accordion">
-    <li><button class = "accordion-control">
-        Buiten spelen</button>
-        <div class = "accordion-panel">
-            <div class = "accordion-informatie">
-                <div> Budget <!--<button>Wijzig</button>--></div>
-                <div>leeftijd <!--<button> Wijzig </button> --></div>
-                <div>soort activiteit <!--<button>Wijzig</button>--></div> </div>
-            <div class = "accordion-afbeelding"> <img src= "images/man-in-white-t-shirt.jpg" alt = "man-in-white-t-shirt" title = "man-in-white-t-shirt"> <!-- <button>Wijzig</button>--></div>
-            <div class = "accordion-omschrijving"> Omschrijving van de activiteit <!--<button>wijzig</button>--></div>
-        </div>
-    </li>
+<div id = "resultaten" class = "accordion"></div>
 
-    --></ul>
+<script src = "static/jquery.min.js"></script>
 
-
-
-<script src = "js/jquery.min.js"></script>
-
-<script>
-var acc = document.getElementsByClassName("accordion-control");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}</script>
+<!--<script src = "js/hoofdscherm.js"></script>-->
 <script>
 
 $(document).ready(function(){
@@ -203,6 +178,7 @@ $(document).ready(function(){
   });</script>
 <script>
     function getData (surl, callback) {
+
 
     //alert(surl);
 
@@ -247,8 +223,14 @@ $(document).ready(function(){
 
       //<li>Vissen <a href="/editactivity.html?id=19">EDIT</a></li>
 
-      s = s + "<li><button class = 'accordion-control'>"+ jsonrecordset[i].ActivityName + "</button>" +
-      "<div class = 'accordion-panel'>" + "</div></li>";
+      s = s + "<dl class = 'accordion'> <dt class = accordion button onclick='maakZichtbaar()'> <button class = 'accordion-control' >"+ jsonrecordset[i].ActivityName + "</button>"+
+     "<dd class = accordion-panel>"+
+     "<div class = 'accordion-informatie'>" +
+    "<div> Budget : €" +jsonrecordset[i].ActivityCost+"</div>" +
+    "<div> Leeftijd: " + jsonrecordset[i].ActivityAgeMinimum + " tot " + jsonrecordset[i].ActivityAgeMaximum+"</div></div>"+
+    "<div class = 'accordion-afbeelding'> <img src= 'images/man-in-white-t-shirt.jpg' alt = 'man-in-white-t-shirt' title = 'man-in-white-t-shirt'></div>"+
+   "<div class = 'accordion-omschrijving'> " + jsonrecordset[i].ActivityDescription+ "</div></dd></dl>";
+
 
       }
     //alert(s);
@@ -257,9 +239,23 @@ $(document).ready(function(){
      document.getElementById("resultaten").innerHTML = s; //hardcoded values and globals are best avoided!!
 
     }
-
   </script>
+<script>
+ function maakZichtbaar(){var acc = document.getElementsByClassName("accordion");
+var i;
 
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+  }}
+</script>
 
 </body>
 
