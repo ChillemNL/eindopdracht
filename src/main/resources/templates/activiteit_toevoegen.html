@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
     <title>Toevoegen activiteit</title>
     <link rel="stylesheet" href="../static/styles.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
 
@@ -54,8 +55,9 @@
     <label>Categorie:<br />
         <select id="categorie" name="categorie" th:field="*{categorieId}">
             <!--option selected="selected" value="0"></option-->
+            <option value="Select">Select</option>
         </select>
-        <a th:href="@{/categorie/toevoegen}" th:target="_blank"><button type="button"><b>+</b></button></a>
+        <a href="#" onclick="openCategorie()"><button type="button"><b>+</b></button></a>
     </label>
         <br />
         <br />
@@ -65,30 +67,38 @@
 
 <script>
 
-var request = new XMLHttpRequest()
-
-request.open('GET', 'http://localhost:8888/categorie/all', true)
-request.onload = function() {
-  // Begin accessing JSON data here
-  var data = JSON.parse(this.response)
-
-  var element = document.getElementById("categorie");
+$(document).ready(fillCategories());
 
 
-  if (request.status >= 200 && request.status < 400) {
-    data.forEach(categorie => {
-      console.log(categorie.id + "-" + categorie.naamCategorie);
-      var option = document.createElement("option");
-      option.value = categorie.id;
-      option.text = categorie.naamCategorie;
-      element.add(option);
-    })
-  } else {
-    console.log('error')
-  }
+
+function AjaxCall(url, data, type) {
+        return $.ajax({
+            url: url,
+            type: type ? type : 'GET',
+            data: data,
+            contentType: 'application/json'
+        });
+    }
+
+function fillCategories(){
+    $('#categorie option').remove();
+    AjaxCall('/categorie/all', null).done(function (response) {
+       console.log(response.length);
+       var s = '<option value="-1">Maak een keuze</option>';
+               for (var i = 0; i < response.length; i++) {
+                   s += '<option value="' + response[i].id + '">' + response[i].naamCategorie + '</option>';
+               }
+               $("#categorie").html(s);
+       }).fail(function (error) {
+            alert(error.StatusText);
+        });
 }
 
-request.send()
+function openCategorie(){
+    window.open("/categorie/toevoegen","_Blank", "top=100, left=200, height=400, width=400, menubar=no, toolbar=no");
+}
+
+
 </script>
 </body>
 </html>

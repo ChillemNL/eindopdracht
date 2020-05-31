@@ -5,7 +5,7 @@
     <title>Categorie toevoegen</title>
     <link rel="stylesheet" href="../static/styles.css" type="text/css">
 </head>
-<body>
+<body onunload="opener.fillCategories();window.close()">
 
 <div class="container">
     <form action="#" th:action="@{/categorie/toevoegen}" th:object="${categorie}" method="post">
@@ -23,7 +23,6 @@
     </form>
 
 </div>
-
-
+</script>
 </body>
 </html>
