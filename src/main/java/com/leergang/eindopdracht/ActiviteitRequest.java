@@ -50,7 +50,8 @@ public class ActiviteitRequest {
         return website;
     }
 
-    public void setCategorieId(Integer categorieId){this.categorieId = categorieId;}
+    public void setCategorieId(Integer categorieId){
+        this.categorieId = categorieId;}
 
     public void setNaamOrganisatie(String naamOrganisatie) {
         this.naamOrganisatie = naamOrganisatie;
