@@ -5,6 +5,7 @@
     <title>Toevoegen activiteit</title>
     <link rel="stylesheet" href="styles.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="scripts.js"></script>
 </head>
 <body>
 
@@ -67,37 +68,11 @@
 
 <script>
 
-$(document).ready(fillCategories());
-
-
-
-function AjaxCall(url, data, type) {
-        return $.ajax({
-            url: url,
-            type: type ? type : 'GET',
-            data: data,
-            contentType: 'application/json'
-        });
-    }
-
-function fillCategories(){
-    $('#categorie option').remove();
-    AjaxCall('/categorie/all', null).done(function (response) {
-       var s = '<option value="-1">Maak een keuze</option>';
-               for (var i = 0; i < response.length; i++) {
-                   console.log(response[i].id);
-                   s += '<option value="' + response[i].id + '">' + response[i].naamCategorie + '</option>';
-               }
-               $("#categorie").html(s);
-       }).fail(function (error) {
-            alert(error.StatusText);
-        });
-}
+$(document).ready(fillDropdownCategorie("categorie"));
 
 function openCategorie(){
     window.open("/categorie/toevoegen","_Blank", "top=100, left=200, height=400, width=400, menubar=no, toolbar=no");
 }
-
 
 </script>
 </body>

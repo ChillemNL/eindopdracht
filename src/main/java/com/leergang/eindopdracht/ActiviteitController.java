@@ -19,6 +19,11 @@ public class ActiviteitController {
         return "index";
     }
 
+    @GetMapping("/beheer_portaal")
+    public String beheerPortaal(){
+        return "beheer_portaal";
+    }
+
     @GetMapping("/activiteit_toevoegen")
     public String activiteitFormulier(Model model) {
         model.addAttribute("activiteit", new ActiviteitRequest());

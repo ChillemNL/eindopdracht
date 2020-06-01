@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8">
     <title>Beheer Portaal</title>
     <link rel="stylesheet" href="styles.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="scripts.js"></script>
 </head>
 <body>
 <div>
@@ -13,7 +14,6 @@
     <br/>
     <label>Filter een categorie:</label>
     <select id="categorie">
-        <option value="-1">Alles</option>
     </select>
     <br/>
     <br/>
@@ -24,7 +24,11 @@
     </ul>
 
 </div>
+<script>
 
+$(document).ready(fillDropdownCategorie("categorie"));
+
+</script>
 
 </body>
 </html>
