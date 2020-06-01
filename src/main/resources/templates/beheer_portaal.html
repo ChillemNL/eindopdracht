@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8">
     <title>Beheer Portaal</title>
-    <link rel="stylesheet" href="styles.css" type="text/css">
+    <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="scripts.js"></script>
 </head>
@@ -18,15 +18,21 @@
     <br/>
     <br/>
     <h2>Activiteiten - bewerken</h2>
-    <ul>
-        <li><div>Voorbeeld 1</div></li>
-        <li><div>Voorbeeld 2</div></li>
+    <ul id="activiteiten" class="accordion">
     </ul>
-
 </div>
 <script>
 
 $(document).ready(fillDropdownCategorie("categorie"));
+$(document).ready(fillActivitiesAll());
+
+$('.accordion').on('click','.accordion-control', function(e){
+    e.preventDefault();
+    $(this)
+        .next('.accordion-panel')
+        .not(':animated')
+        .slideToggle();
+});
 
 </script>
 

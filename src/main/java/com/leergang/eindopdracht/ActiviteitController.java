@@ -4,9 +4,12 @@ import com.leergang.eindopdracht.models.Activiteit;
 
 import com.leergang.eindopdracht.repositories.ActiviteitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+
+import java.util.List;
 
 @Controller
 public class ActiviteitController {
@@ -49,7 +52,7 @@ public class ActiviteitController {
 
     @GetMapping("/activiteit_ophalen")
     public @ResponseBody Iterable<Activiteit> getAllActivities() {
-        return activiteitRepository.findAll();
+        return activiteitRepository.findAllNaamActiviteitSortAsc();
     }
 
     @GetMapping("/activieit_ophalen_per_categorie/{id}")

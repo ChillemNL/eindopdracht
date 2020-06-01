@@ -1,5 +1,13 @@
-h2 {
-    color: blue;
+ul.nobull {
+    list-style-type: none;
+    padding: 20px;
+    margin: 5px;
 }
 
+ul.accordion{
+    list-style-type: none;
+}
 
+.accordion-panel{
+    display: none;
+}
