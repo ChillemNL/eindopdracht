@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
     <title>Toevoegen activiteit</title>
-    <link rel="stylesheet" href="../static/styles.css" type="text/css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
@@ -83,9 +83,9 @@ function AjaxCall(url, data, type) {
 function fillCategories(){
     $('#categorie option').remove();
     AjaxCall('/categorie/all', null).done(function (response) {
-       console.log(response.length);
        var s = '<option value="-1">Maak een keuze</option>';
                for (var i = 0; i < response.length; i++) {
+                   console.log(response[i].id);
                    s += '<option value="' + response[i].id + '">' + response[i].naamCategorie + '</option>';
                }
                $("#categorie").html(s);
