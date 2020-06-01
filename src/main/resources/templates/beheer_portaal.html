@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8">
+    <title>Beheer Portaal</title>
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="scripts.js"></script>
+</head>
+<body>
+<div>
+    <h1>Beheer Potaal</h1>
+    <br/>
+    <br/>
+    <label>Filter een categorie:</label>
+    <select id="categorie">
+    </select>
+    <br/>
+    <br/>
+    <h2>Activiteiten - bewerken</h2>
+    <ul id="activiteiten" class="accordion">
+    </ul>
+</div>
+<script>
+
+$(document).ready(fillDropdownCategorie("categorie"));
+$(document).ready(fillActivitiesAll());
+
+$('.accordion').on('click','.accordion-control', function(e){
+    e.preventDefault();
+    $(this)
+        .next('.accordion-panel')
+        .not(':animated')
+        .slideToggle();
+});
+
+</script>
+
+</body>
+</html>

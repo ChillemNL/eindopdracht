@@ -1,25 +1,37 @@
-var request = new XMLHttpRequest()
-request.open('GET', 'http://localhost:8888/categorie/all', true)
-request.onload = function() {
-  // Begin accessing JSON data here
-  var data = JSON.parse(this.response)
+function AjaxCall(url, data, type) {
+        return $.ajax({
+            url: url,
+            type: type ? type : 'GET',
+            data: data,
+            contentType: 'application/json'
+        });
+    }
 
-  var element = document.getElementById("categorie");
-
-
-  if (request.status >= 200 && request.status < 400) {
-    data.forEach(categorie => {
-      var option = document.createElement("option");
-      option.value = categorie.id;
-      option.text = categorie.naamCategorie;
-      element.add(option);
-    })
-  } else {
-    console.log('error')
-  }
+function fillDropdownCategorie(dropdownId){
+    $('#' + dropdownId + ' option').remove();
+    AjaxCall('/categorie/all', null).done(function (response) {
+       var s = '<option value="-1">Maak een keuze</option>';
+               for (var i = 0; i < response.length; i++) {
+                   s += '<option value="' + response[i].id + '">' + response[i].naamCategorie + '</option>';
+               }
+               $("#"+ dropdownId).html(s);
+       }).fail(function (error) {
+            alert(error.StatusText);
+        });
 }
 
-request.send()
-
-
-
+function fillActivitiesAll(){
+    AjaxCall('/activiteit_ophalen', null).done(function (response) {
+        var s;
+               for (var i = 0; i < response.length; i++) {
+                   console.log(response[i].id);
+                   s+='<li>'+
+                   '<button class="accordion-control">' + response[i].id + '</button>'+
+                   '<div class="accordion-panel">test</div>' +
+                   '</li>'
+               }
+               $("#activiteiten").html(s);
+       }).fail(function (error) {
+            alert(error.StatusText);
+        });
+}

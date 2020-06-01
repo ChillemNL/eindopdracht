@@ -3,7 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
     <title>Toevoegen activiteit</title>
-    <link rel="stylesheet" href="../static/styles.css" type="text/css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="scripts.js"></script>
 </head>
 <body>
 
@@ -52,9 +54,11 @@
     </label>
     <br />
     <label>Categorie:<br />
-        <select id="categorie" name="categorie">
+        <select id="categorie" name="categorie" th:field="*{categorieId}">
             <!--option selected="selected" value="0"></option-->
+            <option value="Select">Select</option>
         </select>
+        <a href="#" onclick="openCategorie()"><button type="button"><b>+</b></button></a>
     </label>
         <br />
         <br />
@@ -64,53 +68,11 @@
 
 <script>
 
-var request = new XMLHttpRequest()
+$(document).ready(fillDropdownCategorie("categorie"));
 
-request.open('GET', 'http://localhost:8888/categorie/all', true)
-request.onload = function() {
-  // Begin accessing JSON data here
-  var data = JSON.parse(this.response)
-
-  var element = document.getElementById("categorie");
-
-
-  if (request.status >= 200 && request.status < 400) {
-    data.forEach(categorie => {
-      console.log(categorie.id + "-" + categorie.naamCategorie);
-      var option = document.createElement("option");
-      option.value = categorie.id;
-      option.text = categorie.naamCategorie;
-      element.add(option);
-    })
-  } else {
-    console.log('error')
-  }
+function openCategorie(){
+    window.open("/categorie/toevoegen","_Blank", "top=100, left=200, height=400, width=400, menubar=no, toolbar=no");
 }
-
-request.send()
-
-var xhr = new XMLHttpRequest();
-  method = 'GET',
-  url = 'http://localhost:8888/activiteit_toevoegen';
-
-xmlhttp.open(method, url, true);
-
-xhr.onload = function() {
-if(xhr.status ===200) {
-responseObject = JSON.parse(xhr.responseText);
-
-var newContent = '';
-for (var i = 0; i < responseObject.events.length; i++)
-    newContent += <div class="leeftijd">';
-
-document.getElementById('content').innerHTML = newContent;
-}
-};
-
-xhr.open('GET', 'events.json', true);
-xhr.send(null);
-
-</script>
 
 </script>
 </body>

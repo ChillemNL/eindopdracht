@@ -35,7 +35,7 @@ public class CategorieController {
 
     @GetMapping(path = "/all")
     public @ResponseBody Iterable<Categorie> getAllCategories() {
-        return categorieRepository.findAll();
+        return categorieRepository.findAllOrderByNaamCategorieAsc();
     }
 
 
