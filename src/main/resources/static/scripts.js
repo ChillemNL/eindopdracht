@@ -20,9 +20,16 @@ function fillDropdownCategorie(dropdownId){
         });
 }
 
-function fillActivitiesAll(){
-    AjaxCall('/activiteit_ophalen', null).done(function (response) {
-        $("#activiteiten").children().remove();
+function fillListActivities(ulId, categorieId="-1"){
+    //categorieId = categorieId || "-1";
+    var url ='';
+    if (categorieId == "-1"){
+        url='/activiteit_ophalen';
+    } else {
+        url='/activieit_ophalen_per_categorie/' + categorieId;
+    }
+    AjaxCall(url, null).done(function (response) {
+        $(ulId).children().remove();
         var s ="";
                for (var i = 0; i < response.length; i++) {
                    console.log(response[i].id);
@@ -33,7 +40,7 @@ function fillActivitiesAll(){
                    '</div>' +
                    '</li>'
                }
-               $("#activiteiten").html(s);
+               $(ulId).html(s);
        }).fail(function (error) {
             alert(error.StatusText);
         });
