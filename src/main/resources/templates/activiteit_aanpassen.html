@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <title>Aanpassen activiteit</title>
+    <link rel="stylesheet" href="/styles.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/scripts.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <form action="#" th:action="@{/activiteit_aanpassen/{id}/(id=${activiteit.id})}" th:object="${activiteit}" method="post">
+        <h2>Gegevens activiteit:</h2>
+        <label>Naam organisatie:<br />
+            <input type="text" name="organisatie" maxlenght="15" th:field="*{naamOrganisatie}" />
+        </label>
+        <br />
+        <label>Plaats:<br />
+            <input type="text" name="plaats" maxlenght="20" th:field="*{plaats}"/>
+        </label>
+        <br />
+        <label>Regio:<br />
+            <select id="regio" name="regio">
+                <option selected="selected" value="Noord">Noord</option>
+                <option value="Midden">Midden</option>
+                <option value="Zuid">Zuid</option>
+            </select>
+            <!--input type="text" name="plaats" maxlenght="20" th:field="*{plaats}"/-->
+        </label>
+        <br />
+        <label>Naam activiteit:<br />
+            <input type="text" name="naam activiteit" maxlenght="15" th:field="*{naamActiviteit}" />
+        </label>
+        <br />
+        <label>Beschrijving activiteit:</label><br />
+        <textarea name="beschrijving activiteit" cols="20" rows="4" th:field="*{BeschrijvingActiviteit}">
+        </textarea>
+        <br />
+        <label>Kosten:<br />
+            <input type="number" name="budget" maxlenght="4" th:field="*{kosten}" />
+        </label>
+        <br />
+        <label>Leeftijdscategorie:<br />
+            <input type="text" name="leeftijdscategorie" maxlenght="4" th:field="*{leeftijdscategorie}" />
+        </label>
+        <br />
+        <label>Soort activiteit:<br />
+            <input type="text" name="soort activiteit" maxlenght="10" th:field="*{soortActiviteit}" />
+        </label>
+        <br />
+        <label>Website:<br />
+            <input type="url" name="website" th:field="*{website}" />
+        </label>
+        <br />
+        <label>Categorie:<br />
+            <select id="categorie" name="categorie" th:field="*{categorieId}">
+                <!--option selected="selected" value="0"></option-->
+                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.naamCategorie}"></option>
+            </select>
+            <button type="button" onclick="openCategorie()"><b>+</b></button>
+        </label>
+        <br />
+        <br />
+        <button type="submit">Aanpassen</button>
+    </form>
+</div>
+
+<script>
+
+function openCategorie(){
+    window.open("/categorie/toevoegen","_Blank", "top=100, left=200, height=400, width=400, menubar=no, toolbar=no");
+}
+
+</script>
+
+</body>
+</html>
