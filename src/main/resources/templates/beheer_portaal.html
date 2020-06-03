@@ -41,8 +41,8 @@
 </div>
 <script>
 
-$(document).ready(fillDropdownCategorie("categorie"));
-$(document).ready(fillActivitiesAll());
+$(document).ready(fillDropdownCategorie("#categorie","Alles"));
+$(document).ready(fillListActivities("#activiteiten"));
 
 $('.accordion').on('click','.accordion-control', function(e){
     e.preventDefault();
@@ -52,6 +52,9 @@ $('.accordion').on('click','.accordion-control', function(e){
         .slideToggle();
 });
 
+$("#categorie").change(function(){
+    fillListActivities("#activiteiten",this.value);
+    });
 
 
 
