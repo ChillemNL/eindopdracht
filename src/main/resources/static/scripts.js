@@ -7,15 +7,40 @@ function AjaxCall(url, data, type) {
         });
     }
 
-function fillDropdownCategorie(dropdownId){
-    $('#' + dropdownId + ' option').remove();
+function fillDropdownCategorie(dropdownId, firstItem="Maak een keuze"){
+    $(dropdownId + ' option').remove();
     AjaxCall('/categorie/all', null).done(function (response) {
-       var s = '<option value="-1">Maak een keuze</option>';
+       var s = '<option value="-1">' + firstItem + '</option>';
                for (var i = 0; i < response.length; i++) {
-                   console.log(response[i].id);
                    s += '<option value="' + response[i].id + '">' + response[i].naamCategorie + '</option>';
                }
-               $("#"+ dropdownId).html(s);
+               $(dropdownId).html(s);
+       }).fail(function (error) {
+            alert(error.StatusText);
+        });
+}
+
+function fillListActivities(listId, categorieId="-1"){
+    //categorieId = categorieId || "-1";
+    var url ='';
+    if (categorieId == "-1"){
+        url='/activiteit_ophalen';
+    } else {
+        url='/activieit_ophalen_per_categorie/' + categorieId;
+    }
+    AjaxCall(url, null).done(function (response) {
+        $(listId).children().remove();
+        var s ="";
+               for (var i = 0; i < response.length; i++) {
+                   console.log(response[i].id);
+                   s+='<li>'+
+                   '<button class="accordion-control">' + response[i].naamActiviteit + ' - ' + response[i].naamOrganisatie +'</button>'+
+                   '<div class="accordion-panel"><button value="'+ response[i].id +'" class="accButton">Aanpassen</button>'+
+                   '<button value="'+ response[i].id +'" class="accButton" style="background-color: red;border-color: red;color: white;">Verwijderen</button>'+
+                   '</div>' +
+                   '</li>'
+               }
+               $(listId).html(s);
        }).fail(function (error) {
             alert(error.StatusText);
         });
