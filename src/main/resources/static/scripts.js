@@ -20,7 +20,7 @@ function fillDropdownCategorie(dropdownId){
         });
 }
 
-function fillListActivities(ulId, categorieId="-1"){
+function fillListActivities(listId, categorieId="-1"){
     //categorieId = categorieId || "-1";
     var url ='';
     if (categorieId == "-1"){
@@ -29,7 +29,7 @@ function fillListActivities(ulId, categorieId="-1"){
         url='/activieit_ophalen_per_categorie/' + categorieId;
     }
     AjaxCall(url, null).done(function (response) {
-        $(ulId).children().remove();
+        $(listId).children().remove();
         var s ="";
                for (var i = 0; i < response.length; i++) {
                    console.log(response[i].id);
@@ -40,7 +40,7 @@ function fillListActivities(ulId, categorieId="-1"){
                    '</div>' +
                    '</li>'
                }
-               $(ulId).html(s);
+               $(listId).html(s);
        }).fail(function (error) {
             alert(error.StatusText);
         });
