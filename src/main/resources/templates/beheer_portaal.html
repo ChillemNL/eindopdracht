@@ -9,16 +9,34 @@
 </head>
 <body>
 <div>
-    <h1>Beheer Potaal</h1>
-    <br/>
-    <br/>
-    <label>Filter een categorie:</label>
-    <select id="categorie">
-    </select>
-    <br/>
-    <br/>
-    <h2>Activiteiten - bewerken</h2>
+    <div style="margin-left:45px;">
+        <h1>Beheer Potaal</h1>
+        <br/>
+        <p>In dit portaal kunnen activiteiten worden onderhouden.
+           het portaal is ingedeeld in drie secties:</p>
+        <ol style="font-size: 18px;">
+            <li><a href="#nieuweActiviteit">Toevoegen nieuwe activiteiten</a></li>
+            <li><a href="#filters">Selecteren van filters voor bestaande activiteiten</a></li>
+            <li><a href="#resultaten">Resultaat van de al dan niet gefilterde activiteiten</a></li>
+        </ol>
+        <br/>
+        <h2 id="nieuweActiviteit">Voeg een nieuwe activitiet toe</h2>
+        <br/>
+        <div class="accordion">
+            <button class="accordion-control"><b>Nieuw</b></button>
+            <div id="opvoerenActiviteit" class="accordion-panel"></div>
+        </div>
+        <br/>
+        <h2 id="filters">Filter selectie</h2>
+        <label>Filter een categorie:</label>
+        <select id="categorie">
+        </select>
+        <br/>
+        <br/>
+        <h2 id="resultaten">Activiteiten overzicht</h2>
+    </div>
     <ul id="activiteiten" class="accordion">
+
     </ul>
 </div>
 <script>
@@ -33,6 +51,10 @@ $('.accordion').on('click','.accordion-control', function(e){
         .not(':animated')
         .slideToggle();
 });
+
+
+
+
 
 </script>
 

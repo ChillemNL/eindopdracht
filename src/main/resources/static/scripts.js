@@ -22,12 +22,15 @@ function fillDropdownCategorie(dropdownId){
 
 function fillActivitiesAll(){
     AjaxCall('/activiteit_ophalen', null).done(function (response) {
-        var s;
+        $("#activiteiten").children().remove();
+        var s ="";
                for (var i = 0; i < response.length; i++) {
                    console.log(response[i].id);
                    s+='<li>'+
-                   '<button class="accordion-control">' + response[i].id + '</button>'+
-                   '<div class="accordion-panel">test</div>' +
+                   '<button class="accordion-control">' + response[i].naamActiviteit + ' - ' + response[i].naamOrganisatie +'</button>'+
+                   '<div class="accordion-panel"><button value="'+ response[i].id +'" class="accButton">Aanpassen</button>'+
+                   '<button value="'+ response[i].id +'" class="accButton" style="background-color: red;border-color: red;color: white;">Verwijderen</button>'+
+                   '</div>' +
                    '</li>'
                }
                $("#activiteiten").html(s);
