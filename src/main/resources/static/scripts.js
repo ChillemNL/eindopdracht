@@ -7,7 +7,7 @@ function AjaxCall(url, data, type) {
         });
     }
 
-function fillDropdownCategorie(dropdownId, firstItem="naamCategorie"){
+function fillDropdownCategorie(dropdownId, firstItem="Maak een keuze"){
     $(dropdownId + ' option').remove();
     AjaxCall('/categorie/all', null).done(function (response) {
        var s = '<option value="-1">' + firstItem + '</option>';

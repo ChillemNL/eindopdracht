@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <title>Hoofdscherm activiteiten</title>
+    <script src="scripts.js"></script>
    <!-- <link rel="stylesheet" type="text/css" href="static\hoofdscherm.css" />-->
     <Style>
     body{font-family: Arial, Verdana, sans-serif;
@@ -123,11 +124,11 @@ div.accordion-afbeelding img {
 <form id= "filters">
     <div class = "filter-container">
         <!--action = "link naar script actie"-->
-        <div> <p><b>Soort activiteit</b></p>
-            <select id = "activiteit" name = "activiteit" onChange="showResults();">
-                <option selected = "selected" value = "0">type</option><!--eventueel id= "naam" toevoegen als javascript nodig is -->
-                <!--<option value = "buiten">Buiten </option>
-                <option value = "binnen">Binnen </option>--></select> </div>
+        <div> <p><b>Categorie</b></p>
+            <select id = "categorie" name = "categorie" onChange="showResults();">
+
+            </select>
+        </div>
 
 
 
@@ -255,6 +256,10 @@ for (i = 0; i < acc.length; i++) {
   }}
 
 
+</script>
+
+<script>
+    $(document).ready(fillDropdownCategorie("#categorie"));
 </script>
 
 </body>
