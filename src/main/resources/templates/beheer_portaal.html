@@ -8,6 +8,11 @@
     <script src="scripts.js"></script>
 </head>
 <body>
+<div id="delete_message">
+    <h2>Weet je zeker dat je deze activiteit wilt verwijderen?</h2>
+    <button id="delete" value="Verwijderen">Verwijderen</button>
+    <input type="button" value="Annuleren" id="cancel">
+</div>
 <div>
     <div style="margin-left:45px;">
         <h1>Beheer Potaal</h1>
@@ -80,6 +85,29 @@ function deleteActiviteit(activiteitId){
         console.log("ERROR: ", e);
       }
     });
+}
+
+function setDeleteId(activiteitId){
+    $("#delete").val(activiteitId);
+}
+
+$('#delete').click(function(){
+    deleteActiviteit($('#delete').val())
+    hide();
+});
+
+$("#cancel").click(function(){
+    hide();
+  });
+
+function message()
+{
+  $("#delete_message").slideDown();
+}
+
+function hide()
+{
+  $("#delete_message").slideUp();
 }
 
 </script>

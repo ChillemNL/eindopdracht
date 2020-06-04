@@ -35,3 +35,30 @@ ul.accordion{
     padding: 4px;
     margin-right: 5px;
 }
+
+#delete_message
+{
+	display:none;
+	position:fixed;
+	top:0px;
+	width:100%;
+	height:150px;
+	background-color:#5882FA;
+	text-align:center;
+}
+#delete_message h2
+{
+	color:#0431B4;
+}
+#delete,#cancel
+{
+	border:none;
+	background:none;
+	width:120px;
+	height:40px;
+	font-size:18px;
+	border-radius:5px;
+	border:2px solid white;
+	margin:10px;
+	color:#CED8F6;
+}
