@@ -6,6 +6,8 @@ import com.leergang.eindopdracht.repositories.ActiviteitRepository;
 import com.leergang.eindopdracht.repositories.CategorieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -105,6 +107,11 @@ public class ActiviteitController {
         return "resultaat";
     }
 
+    @DeleteMapping(value="activiteit_verwijderen/{id}")
+    public ResponseEntity<Void> deleteActiviteit(@PathVariable("id") Integer id){
+        activiteitRepository.deleteById(id);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    }
 }
 
 

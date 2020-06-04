@@ -68,6 +68,19 @@ function setCategorie(categorieId){
     $('#categorie').val(categorieId);
 }
 
+function deleteActiviteit(activiteitId){
+    $.ajax({
+      type : "DELETE",
+      url : "/activiteit_verwijderen/" + activiteitId,
+      success: function(){
+        fillListActivities("#activiteiten",$('#categorie').val())
+      },
+      error : function(e) {
+        alert("ERROR: ", e);
+        console.log("ERROR: ", e);
+      }
+    });
+}
 
 </script>
 
