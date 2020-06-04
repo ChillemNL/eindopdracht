@@ -35,7 +35,7 @@ function fillListActivities(listId, categorieId="-1"){
                    console.log(response[i].id);
                    s+='<li>'+
                    '<button class="accordion-control">' + response[i].naamActiviteit + ' - ' + response[i].naamOrganisatie +'</button>'+
-                   '<div class="accordion-panel"><button value="'+ response[i].id +'" class="accButton">Aanpassen</button>'+
+                   '<div class="accordion-panel"><button value="'+ response[i].id +'" class="accButton" onclick="openActiviteitAanpassen('+response[i].id+')">Aanpassen</button>'+
                    '<button value="'+ response[i].id +'" class="accButton" style="background-color: red;border-color: red;color: white;">Verwijderen</button>'+
                    '</div>' +
                    '</li>'

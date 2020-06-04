@@ -52,6 +52,10 @@ $('.accordion').on('click','.accordion-control', function(e){
         .slideToggle();
 });
 
+function openActiviteitAanpassen(activiteitId){
+    window.open("/activiteit_aanpassen/"+activiteitId,"_Blank", "top=100, left=200, height=600, width=400, menubar=no, toolbar=no");
+}
+
 $("#categorie").change(function(){
     fillListActivities("#activiteiten",this.value);
     });
