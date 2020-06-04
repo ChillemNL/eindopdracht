@@ -20,10 +20,10 @@
             <li><a href="#resultaten">Resultaat van de al dan niet gefilterde activiteiten</a></li>
         </ol>
         <br/>
-        <h2 id="nieuweActiviteit">Voeg een nieuwe activitiet toe</h2>
+        <h2 id="nieuweActiviteit">Voeg een nieuwe activiteit toe</h2>
         <br/>
         <div class="accordion">
-            <button class="accordion-control"><b>Nieuw</b></button>
+            <button class="accordion-control" onclick="openActiviteiteToevoegen();"><b>Nieuw</b></button>
             <div id="opvoerenActiviteit" class="accordion-panel"></div>
         </div>
         <br/>
@@ -56,7 +56,13 @@ $("#categorie").change(function(){
     fillListActivities("#activiteiten",this.value);
     });
 
+function openActiviteiteToevoegen(){
+    window.open("/activiteit_toevoegen","_Blank", "top=100, left=200, height=600, width=400, menubar=no, toolbar=no");
+}
 
+function setCategorie(categorieId){
+    $('#categorie').val(categorieId);
+}
 
 
 </script>

@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="scripts.js"></script>
 </head>
-<body>
+<body onunload="opener.fillListActivities('#activiteiten',$('#categorie').val());opener.setCategorie($('#categorie').val());window.close();window.close()">
 
 <div class="container">
 <form action="#" th:action="@{/activiteit_toevoegen}" th:object="${activiteit}" method="post">
