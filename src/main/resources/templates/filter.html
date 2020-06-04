@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+        <title>Filter</title>
+        <link rel="stylesheet" href="/styles.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    </head>
+
+    <body onunload="opener.fillDropdownCategorie('#categorie');window.close()">
+
+    <div id ="naamCategorie"></div>
+    <script src="scripts.js"></script>
+
+    <script>
+        const url = "script.js";
+
+        let xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if(this.readyState==4 && this.status == 200) {
+            document.getElementById("naamCategorie").innerHTML = responseText;
+            }
+        }
+      xmlhttp.open('GET', url, true);
+      xmlhttp.send();
+
+
+
+
+
+    </script>
+</body>
+</html>
