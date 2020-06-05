@@ -67,8 +67,8 @@ function fillListActivitiesIndex(listId, categorieId="-1"){
                           "<div> Budget : €" +response[i].kosten+"</div>" +
                           "<div> Leeftijd: " + response[i].leeftijdscategorie + "</div>"+
                           "<div> Plaats: "+ response[i].plaats +"</div>" +
-                          "<div> Website: <a href=" + response[i].website + ">" + response[i].website + "</a> </div></div>" +
-                          "<div class = 'accordion-afbeelding'> <img src= 'images/man-in-white-t-shirt.jpg' alt = 'man-in-white-t-shirt' title = 'man-in-white-t-shirt'></div>"+
+                          "<div> Website: <a href='" + response[i].website + "' target='_blank'>" + response[i].website + "</a> </div></div>" +
+                          "<div class = 'accordion-afbeelding'> <img src= '/images/empty-street.jpg' alt = 'empty-street' title = 'empty-street'></div>"+
                          "<div class = 'accordion-omschrijving'> " + response[i].beschrijvingActiviteit+ "</div></dd></dl>";
                }
                $(listId).html(s);

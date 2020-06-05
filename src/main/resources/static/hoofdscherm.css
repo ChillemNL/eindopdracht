@@ -31,14 +31,16 @@ margin: auto;
 .filter-container{
   display: flex;
  flex-direction: row;
+
 }
 
 
  .filter-container>div{
  	width: 350px;
- 	 margin: auto;
+ 	 margin: 5px;
 
 }
+
 
 select {
   width: 100%;
