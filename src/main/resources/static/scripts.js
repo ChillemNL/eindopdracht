@@ -7,7 +7,7 @@ function AjaxCall(url, data, type) {
         });
     }
 
-function fillDropdownCategorie(dropdownId, firstItem="Maak een keuze"){
+function fillDropdownCategorie(dropdownId, firstItem="Maak een keuze",categorieId="-1"){
     $(dropdownId + ' option').remove();
     AjaxCall('/categorie/all', null).done(function (response) {
        var s = '<option value="-1">' + firstItem + '</option>';
@@ -15,6 +15,7 @@ function fillDropdownCategorie(dropdownId, firstItem="Maak een keuze"){
                    s += '<option value="' + response[i].id + '">' + response[i].naamCategorie + '</option>';
                }
                $(dropdownId).html(s);
+               $(dropdownId).val(categorieId);
        }).fail(function (error) {
             alert(error.StatusText);
         });
