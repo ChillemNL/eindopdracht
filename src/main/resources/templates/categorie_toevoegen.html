@@ -5,7 +5,7 @@
     <title>Categorie toevoegen</title>
     <link rel="stylesheet" href="../static/styles.css" type="text/css">
 </head>
-<body onunload="opener.fillDropdownCategorie('#categorie');window.close()">
+<body onunload="opener.fillDropdownCategorie('#categorie');window.close();window.close()">
 
 <div class="container">
     <form action="#" th:action="@{/categorie/toevoegen}" th:object="${categorie}" method="post">

@@ -167,15 +167,21 @@ div.accordion-afbeelding img {
 <script>
 
 $(document).ready(function(){
-
-
-  getData ("/php/getcategorie.php", listCategory);
-  getData ("http://localhost:8888/activiteit_ophalen", listActivities);
-
-
-
-  console.log("document is ready");
+    getData ("/php/getcategorie.php", listCategory);
+    fillListActivitiesIndex("#resultaten");
+    fillDropdownCategorie("#categorie","Alles");
+    console.log("document is ready");
   });</script>
+<script>
+
+$("#categorie").change(function(){
+    fillListActivitiesIndex("#resultaten",this.value);
+});
+
+
+</script>
+
+
 <script>
     function getData (surl, callback) {
 
@@ -256,10 +262,6 @@ for (i = 0; i < acc.length; i++) {
   }}
 
 
-</script>
-
-<script>
-    $(document).ready(fillDropdownCategorie("#categorie"));
 </script>
 
 </body>

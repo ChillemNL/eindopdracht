@@ -1,11 +1,11 @@
 function AjaxCall(url, data, type) {
-        return $.ajax({
-            url: url,
-            type: type ? type : 'GET',
-            data: data,
-            contentType: 'application/json'
-        });
-    }
+             return $.ajax({
+                 url: url,
+                 type: type ? type : 'GET',
+                 data: data,
+                 contentType: 'application/json'
+             });
+         }
 
 function fillDropdownCategorie(dropdownId, firstItem="Maak een keuze",categorieId="-1"){
     $(dropdownId + ' option').remove();
@@ -41,6 +41,34 @@ function fillListActivities(listId, categorieId="-1"){
                    //'<button value="'+ response[i].id +'" class="accButton" style="background-color: red;border-color: red;color: white;" onclick="deleteActiviteit('+ response[i].id +')">Verwijderen</button>'+
                    '</div>' +
                    '</li>'
+               }
+               $(listId).html(s);
+       }).fail(function (error) {
+            alert(error.StatusText);
+        });
+}
+
+function fillListActivitiesIndex(listId, categorieId="-1"){
+    //categorieId = categorieId || "-1";
+    var url ='';
+    if (categorieId == "-1"){
+        url='/activiteit_ophalen';
+    } else {
+        url='/activieit_ophalen_per_categorie/' + categorieId;
+    }
+    AjaxCall(url, null).done(function (response) {
+        $(listId).children().remove();
+        var s ="";
+               for (var i = 0; i < response.length; i++) {
+                   console.log(response[i].id);
+                   s+="<dl class = 'accordion'> <dt class = accordion button onclick='maakZichtbaar()'> <button class = 'accordion-control' >"+ response[i].naamActiviteit + "</button>"+
+                           "<dd class = accordion-panel>"+
+                           "<div class = 'accordion-informatie'>" +
+                          "<div> Budget : €" +response[i].kosten+"</div>" +
+                          "<div> Leeftijd: " + response[i].leeftijdscategorie + "</div>"+
+                          "<div> Plaats: "+ response[i].plaats +"</div></div>" +
+                          "<div class = 'accordion-afbeelding'> <img src= 'images/man-in-white-t-shirt.jpg' alt = 'man-in-white-t-shirt' title = 'man-in-white-t-shirt'></div>"+
+                         "<div class = 'accordion-omschrijving'> " + response[i].beschrijvingActiviteit+ "</div></dd></dl>";
                }
                $(listId).html(s);
        }).fail(function (error) {
