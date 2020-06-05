@@ -1,11 +1,10 @@
-body {font-family: Arial, Verdana, sans-serif;
+body{font-family: Arial, Verdana, sans-serif;
 background-color: #ddffd0;}
 
 
 h1{
 text-align: center;
  margin-bottom:-5px;}
-
 
  #introductie{
 
@@ -49,7 +48,7 @@ select {
   background-color: #f1f1f1;
 }
 
-ul{ 
+ul{
 list-style-type: none;
  padding: 20px;
   margin: 5px;
@@ -63,7 +62,7 @@ list-style-type: none;
      }
 
 .accordion-panel{
-   
+
    height: 200px;
    background: #DCDCDC;
   margin-top: -5px;
@@ -81,7 +80,7 @@ list-style-type: none;
   float: left;
   width: 25%;
   border: 1px solid green;
-  
+
 }
 div.accordion-afbeelding img {
   width: 100%;
@@ -92,11 +91,6 @@ div.accordion-afbeelding img {
 .accordion-omschrijving{
   float: right;
   width: 54%;
-  border: 1px solid green; 
+  border: 1px solid green;
   height: 200px;
-}
-.test {
-width: 100px;
-height: 50px;
-border: solid black 4px;
 }

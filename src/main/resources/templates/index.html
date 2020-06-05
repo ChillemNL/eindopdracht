@@ -4,106 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <title>Hoofdscherm activiteiten</title>
     <script src="scripts.js"></script>
-   <!-- <link rel="stylesheet" type="text/css" href="static\hoofdscherm.css" />-->
-    <Style>
-    body{font-family: Arial, Verdana, sans-serif;
-background-color: #ddffd0;}
-
-
-h1{
-text-align: center;
- margin-bottom:-5px;}
-
- #introductie{
-
-  padding: 25px;
-  height: 50x;
-  text-align: center;
-   margin-top:-5px;
-}
-
-.plaatjes-container{
-  display: flex;
- flex-direction: row;
-  justify-content: center;
-
-
-}
-
-.plaatjes-container > div {
-margin: auto;
-  text-align: center;
-
-  }
-
-.filter-container{
-  display: flex;
- flex-direction: row;
-}
-
-
- .filter-container>div{
- 	width: 350px;
- 	 margin: auto;
-
-}
-
-select {
-  width: 100%;
-  padding: 16px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #f1f1f1;
-}
-
-ul{
-list-style-type: none;
- padding: 20px;
-  margin: 5px;
-}
-
-.accordion-control{
-	 background: #808080;
-  		margin: 5px;
-  		padding: 20px;
-       width: 100%;
-     }
-
-.accordion-panel{
-
-   height: 200px;
-   background: #DCDCDC;
-  margin-top: -5px;
-      padding: 20px;
-      display:none;
-      }
-
-.accordion-informatie{
-  float: left;
-  width:20%;
-  border: 1px solid green;
-  height: 200px;
-}
-.accordion-afbeelding{
-  float: left;
-  width: 25%;
-  border: 1px solid green;
-
-}
-div.accordion-afbeelding img {
-  width: 100%;
-  height: 200px;
-  }
-
-
-.accordion-omschrijving{
-  float: right;
-  width: 54%;
-  border: 1px solid green;
-  height: 200px;
-}
-
-</Style>
+    <link rel="stylesheet" type="text/css" href="hoofdscherm.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
@@ -129,10 +30,6 @@ div.accordion-afbeelding img {
 
             </select>
         </div>
-
-
-
-
 
         <!--action = "link naar script actie"-->
         <div><p><b>Budget</b></p>
@@ -167,7 +64,6 @@ div.accordion-afbeelding img {
 <script>
 
 $(document).ready(function(){
-    getData ("/php/getcategorie.php", listCategory);
     fillListActivitiesIndex("#resultaten");
     fillDropdownCategorie("#categorie","Alles");
     console.log("document is ready");
@@ -178,73 +74,8 @@ $("#categorie").change(function(){
     fillListActivitiesIndex("#resultaten",this.value);
 });
 
-
 </script>
 
-
-<script>
-    function getData (surl, callback) {
-
-
-    //alert(surl);
-
-    $.ajax({
-      url: surl,
-
-      method: 'GET',
-      dataType: 'json',
-      success: callback,
-      error: function(requestObject, error, errorThrown) {
-
-        console.log("error thrown, add handler to exit gracefully");
-      },
-      timeout: 3000 //to do: research and develop further in combination with error handling
-      });
-    return false;
-    };
-
-    </script>
-<script>
-  function listCategory(jsonrecordset) {
-    var s = "";
-      s = "<option selected='selected' value='0'>Categorie</option>";
-
-      for(var i=0; i < jsonrecordset.length;i++) {
-
-      s = s + "<option value='" + jsonrecordset[i].CategoryCode + "'>" + jsonrecordset[i].CategoryName + "</option>";
- }
-
-
-     document.getElementById("activiteit").innerHTML = s; //hardcoded values and globals are best avoided!!
-
-    }
-
-  </script>
-
-<script>
-  function listActivities(jsonrecordset) {
-    var s = "";
-
-      for(var i=0; i < jsonrecordset.length;i++) {
-
-      s = s + "<dl class = 'accordion'> <dt class = accordion button onclick='maakZichtbaar()'> <button class = 'accordion-control' >"+ jsonrecordset[i].naamActiviteit + "</button>"+
-     "<dd class = accordion-panel>"+
-     "<div class = 'accordion-informatie'>" +
-    "<div> Budget : €" +jsonrecordset[i].kosten+"</div>" +
-    "<div> Leeftijd: " + jsonrecordset[i].leeftijdscategorie + "</div>"+
-    "<div> Plaats: "+ jsonrecordset[i].plaats +"</div></div>" +
-    "<div class = 'accordion-afbeelding'> <img src= 'images/man-in-white-t-shirt.jpg' alt = 'man-in-white-t-shirt' title = 'man-in-white-t-shirt'></div>"+
-   "<div class = 'accordion-omschrijving'> " + jsonrecordset[i].beschrijvingActiviteit+ "</div></dd></dl>";
-
-
-      }
-    //alert(s);
-    //console.log(s);
-
-     document.getElementById("resultaten").innerHTML = s; //hardcoded values and globals are best avoided!!
-
-    }
-  </script>
 <script>
  function maakZichtbaar(){var acc = document.getElementsByClassName("accordion");
 var i;
@@ -260,7 +91,6 @@ for (i = 0; i < acc.length; i++) {
     }
   });
   }}
-
 
 </script>
 
