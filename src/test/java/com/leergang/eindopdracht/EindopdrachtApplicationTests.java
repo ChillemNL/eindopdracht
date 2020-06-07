@@ -16,10 +16,16 @@ public class EindopdrachtApplicationTests {
 		@Autowired
 		private TestRestTemplate restTemplate;
 
-		@Test //controleert of index.html terugkomt door de titel op de pagina te zoeken
-		public void greetingShouldReturnDefaultMessage() throws Exception {
+		@Test //controleert of index terugkomt door de titel van de header op de pagina te zoeken
+		public void indexTitelMoetGevondenWorden() throws Exception {
 			assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
 					String.class)).contains("ActiviteitenTip");
+		}
+
+		@Test //controleert of beheer_portaal terugkomt door een koptekst op de pagina te zoeken
+		public void beheerPortaalTekstMoetGevondenWorden() throws Exception {
+			assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/beheer_portaal",
+					String.class)).contains("Voeg een nieuwe activiteit toe");
 		}
 
 
