@@ -78,7 +78,7 @@ public class ActiviteitController {
             model.addAttribute("activiteit", activiteit);
             return "activiteit_aanpassen";
         }
-        return "index";
+        return "resultaat";
         // De functie moet de beheerpagina hier returnen.
     }
 

@@ -62,3 +62,14 @@ ul.accordion{
 	margin:10px;
 	color:#CED8F6;
 }
+
+input:required:valid {
+  border-color: Gray;
+  border-width: 2px;
+  background-color: LightGreen;
+}
+
+input:required:invalid {
+  border-color: Gray;
+  background-color: LightCoral;
+}

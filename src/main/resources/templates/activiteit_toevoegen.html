@@ -12,8 +12,9 @@
 <div class="container">
 <form action="#" th:action="@{/activiteit_toevoegen}" th:object="${activiteit}" method="post">
    <h2>Gegevens activiteit:</h2>
-    <label>Naam organisatie:<br />
-        <input type="text" name="organisatie" maxlenght="15" th:field="*{naamOrganisatie}" />
+    <h5>De velden met een asterisk (*) zijn verplicht.</h5>
+    <label>Naam organisatie: *<br />
+        <input type="text" name="organisatie" maxlenght="15" required="required" th:field="*{naamOrganisatie}" />
     </label>
         <br />
     <label>Plaats:<br />
@@ -29,8 +30,8 @@
         <!--input type="text" name="plaats" maxlenght="20" th:field="*{plaats}"/-->
     </label>
         <br />
-    <label>Naam activiteit:<br />
-        <input type="text" name="naam activiteit" maxlenght="15" th:field="*{naamActiviteit}" />
+    <label>Naam activiteit: *<br />
+        <input type="text" name="naam activiteit" required="required" maxlenght="15" th:field="*{naamActiviteit}" />
     </label>
         <br />
     <label>Beschrijving activiteit:</label><br />
