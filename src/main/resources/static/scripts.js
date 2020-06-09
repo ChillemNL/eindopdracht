@@ -61,7 +61,7 @@ function fillListActivitiesIndex(listId, categorieId="-1"){
         var s ="";
                for (var i = 0; i < response.length; i++) {
                    console.log(response[i].id);
-                   s+="<dl class = 'accordion'> <dt class = accordion button onclick='maakZichtbaar()'> <button class = 'accordion-control' >"+ response[i].naamActiviteit + "</button>"+
+                   s+="<dl class = 'accordion'><button class = 'accordion-control' >"+ response[i].naamActiviteit + "</button>"+
                            "<dd class = accordion-panel>"+
                            "<div class = 'accordion-informatie'>" +
                           "<div> Budget : €" +response[i].kosten+"</div>" +

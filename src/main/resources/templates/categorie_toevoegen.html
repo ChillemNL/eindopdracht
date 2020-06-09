@@ -11,7 +11,7 @@
     <form action="#" th:action="@{/categorie/toevoegen}" th:object="${categorie}" method="post">
         <h2>Gegevens Categorie:</h2>
         <label>Naam categorie:<br />
-            <input type="text" name="naamCategorie" maxlenght="15" th:field="*{naamCategorie}" />
+            <input type="text" name="naamCategorie" required="required" maxlenght="15" th:field="*{naamCategorie}" />
         </label>
         <br />
         <label>Beschrijving Categorie:<br />
