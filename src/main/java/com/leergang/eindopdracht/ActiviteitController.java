@@ -79,15 +79,10 @@ public class ActiviteitController {
             return "activiteit_aanpassen";
         }
         return "resultaat";
-        // De functie moet de beheerpagina hier returnen.
     }
 
     @PostMapping("activiteit_aanpassen/{id}")
     public String activiteitAanpassen(@ModelAttribute ActiviteitRequest request, @PathVariable String id) {
-        // model ophalen
-        // velden van de model aanpassen met getters en setters
-        // gegevens van model opslaan
-
         Optional<Activiteit> query = activiteitRepository.findById(Integer.parseInt(id));
        if (query.isPresent()) {
            Activiteit activiteit = query.get();
@@ -103,7 +98,6 @@ public class ActiviteitController {
            activiteit.setWebsite(request.getWebsite());
            activiteitRepository.save(activiteit);
        }
-            // Hier moet de beheerpagina worden gereturned.
         return "resultaat";
     }
 
