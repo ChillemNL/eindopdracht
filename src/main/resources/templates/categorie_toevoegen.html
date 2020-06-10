@@ -3,26 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Categorie toevoegen</title>
-    <link rel="stylesheet" href="../static/styles.css" type="text/css">
+    <link rel="stylesheet" href="../styles.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../scripts.js"></script>
 </head>
 <body onunload="opener.fillDropdownCategorie('#categorie');window.close();window.close()">
 
 <div class="container">
-    <form action="#" th:action="@{/categorie/toevoegen}" th:object="${categorie}" method="post">
+    <form id="catForm" name=categorieFrom"" action="#" th:action="@{/categorie/toevoegen}" th:object="${categorie}" method="post">
         <h2>Gegevens Categorie:</h2>
         <label>Naam categorie:<br />
             <input type="text" name="naamCategorie" required="required" maxlenght="15" th:field="*{naamCategorie}" />
         </label>
+        <label id="duplicateWarning"></label>
         <br />
         <label>Beschrijving Categorie:<br />
             <input type="text" name="beschrijvingCategorie" maxlenght="20" th:field="*{beschrijvingCategorie}"/>
         </label>
         <br />
         <br />
-        <button type="submit">Toevoegen</button>
+        <button id="submitCheck" type="button">Toevoegen</button>
     </form>
 
 </div>
+
+<!-- Controleer of de categorie al bestaat, niet opslaan als de categorie al bestaat -->
+<script>
+$('#submitCheck').click(function checkCategorieExists(){
+    var x = $("#naamCategorie"). val();
+
+    document.getElementById('duplicateWarning').innerHTML = '';
+    AjaxCall('/categorie/controle/'+x, null).done(function (response) {
+        if(response==true){
+            document.getElementById('duplicateWarning').innerHTML = 'Categorie bestaat al!';
+        } else{
+            $('#catForm').submit();
+        }
+    }).fail(function (error) {
+        alert(error.StatusText);
+     });
+});
+
 </script>
 </body>
 </html>

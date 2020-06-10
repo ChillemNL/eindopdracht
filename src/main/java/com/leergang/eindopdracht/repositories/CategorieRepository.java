@@ -10,4 +10,7 @@ import java.util.List;
 public interface CategorieRepository extends CrudRepository<Categorie, Integer>{
     @Query(value="SELECT id, naam_categorie, beschrijving_categorie FROM categorie ORDER BY naam_categorie ASC",nativeQuery=true)
     List<Categorie> findAllOrderByNaamCategorieAsc();
+
+    boolean existsByNaamCategorie(String naam_categorie);
+
 }

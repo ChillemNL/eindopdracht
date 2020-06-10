@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.PublicKey;
 import java.util.List;
 
 @Controller
@@ -38,5 +39,9 @@ public class CategorieController {
         return categorieRepository.findAllOrderByNaamCategorieAsc();
     }
 
+    @GetMapping(path = "/controle/{naam}")
+    public @ResponseBody boolean checkCategorie(@PathVariable("naam") String naam){
+        return categorieRepository.existsByNaamCategorie(naam);
+    }
 
 }
