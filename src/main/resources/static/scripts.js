@@ -21,6 +21,27 @@ function fillDropdownCategorie(dropdownId, firstItem="Maak een keuze",categorieI
         });
 }
 
+function fillDropdownCategorieByName(dropdownId,naamCategorie){
+    $(dropdownId + ' option').remove();
+    AjaxCall('/categorie/all', null).done(function (response) {
+       var s = '<option value="-1">Maak een keuze</option>';
+               for (var i = 0; i < response.length; i++) {
+                   s += '<option value="' + response[i].id + '">' + response[i].naamCategorie + '</option>';
+               }
+               $(dropdownId).html(s);
+       }).fail(function (error) {
+            alert(error.StatusText);
+        });
+    console.log(naamCategorie);
+    AjaxCall('/categorie/haal-een-categorie/'+naamCategorie, null).done(function (response) {
+             $(dropdownId).val(response[0].id);
+         }).fail(function (error) {
+             alert(error.StatusText);
+         });
+    console.log(naamCategorie);
+}
+
+
 function fillListActivities(listId, categorieId="-1"){
     //categorieId = categorieId || "-1";
     var url ='';

@@ -44,4 +44,9 @@ public class CategorieController {
         return categorieRepository.existsByNaamCategorie(naam);
     }
 
+    @GetMapping(path = "haal-een-categorie/{naam}")
+    public @ResponseBody Iterable<Categorie> haalCategorie(@PathVariable("naam") String naam){
+        return categorieRepository.findByName(naam);
+    }
+
 }

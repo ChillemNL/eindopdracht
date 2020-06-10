@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../scripts.js"></script>
 </head>
-<body onunload="opener.fillDropdownCategorie('#categorie');window.close();window.close()">
+<body onunload="opener.fillDropdownCategorieByName('#categorie',$('#naamCategorie').val());window.close();window.close()">
 
 <div class="container">
     <form id="catForm" name=categorieFrom"" action="#" th:action="@{/categorie/toevoegen}" th:object="${categorie}" method="post">
@@ -30,7 +30,7 @@
 <!-- Controleer of de categorie al bestaat, niet opslaan als de categorie al bestaat -->
 <script>
 $('#submitCheck').click(function checkCategorieExists(){
-    var x = $("#naamCategorie"). val();
+    var x = $("#naamCategorie").val();
 
     document.getElementById('duplicateWarning').innerHTML = '';
     AjaxCall('/categorie/controle/'+x, null).done(function (response) {
