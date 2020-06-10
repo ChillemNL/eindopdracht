@@ -27,7 +27,7 @@ public class ActiviteitController {
     private CategorieRepository categorieRepository;
 
     @GetMapping("/")
-    public String foo() {
+    public String home() {
         return "index";
     }
 
