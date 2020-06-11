@@ -3,23 +3,19 @@ package com.leergang.eindopdracht;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.leergang.eindopdracht.models.Activiteit;
+
 import com.leergang.eindopdracht.models.Categorie;
-import org.junit.Before;
+import com.leergang.eindopdracht.repositories.CategorieRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 
+@ExtendWith(MockitoExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class EindopdrachtApplicationTests {
 
@@ -40,6 +36,15 @@ public class EindopdrachtApplicationTests {
 				String.class)).contains("Voeg een nieuwe activiteit toe");
 	}
 
+	@Test //test class Categorie
+	public void addCategorieTest(){
+		Categorie categorie = new Categorie();
+		categorie.setNaamCategorie("Test1");
+		categorie.setBeschrijvingCategorie("Test1_omschrijving");
+		assertEquals("Test1",categorie.getNaamCategorie());
+		assertEquals("Test1_omschrijving",categorie.getBeschrijvingCategorie());
+	}
+
 	@Autowired
 	private CategorieController categorieController;
 
@@ -50,23 +55,6 @@ public class EindopdrachtApplicationTests {
 		assertNotNull(result.iterator().next());
 	}
 
-	@Before
-	public void init() {
-		MockitoAnnotations.initMocks(this);
-	}
-
-	@Mock
-	List<String> mockedList;
-
-	@Test
-	public void whenUseMockAnnotation_thenMockIsInjected() {
-		mockedList.add("one");
-		Mockito.verify(mockedList).add("one");
-		assertEquals(0, mockedList.size());
-
-		Mockito.when(mockedList.size()).thenReturn(100);
-		assertEquals(100, mockedList.size());
-	}
 
 }
 
