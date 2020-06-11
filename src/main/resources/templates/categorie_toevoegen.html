@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../scripts.js"></script>
 </head>
-<body onunload="opener.fillDropdownCategorieByName('#categorie',$('#naamCategorie').val());window.close();window.close()">
+<body onunload="opener.fillDropdownCategorieByName('#categorie',if($('#naamCategorie').val())==undefined){''}else{$('#naamCategorie').val())};window.close();window.close()">
 
 <div class="container">
     <form id="catForm" name=categorieFrom"" action="#" th:action="@{/categorie/toevoegen}" th:object="${categorie}" method="post">

@@ -32,13 +32,15 @@ function fillDropdownCategorieByName(dropdownId,naamCategorie){
        }).fail(function (error) {
             alert(error.StatusText);
         });
-    console.log(naamCategorie);
-    AjaxCall('/categorie/haal-een-categorie/'+naamCategorie, null).done(function (response) {
-             $(dropdownId).val(response[0].id);
-         }).fail(function (error) {
-             alert(error.StatusText);
-         });
-    console.log(naamCategorie);
+    if(naamCategorie==""){
+        $(dropdownId).val("-1");
+    } else {
+        AjaxCall('/categorie/haal-een-categorie/'+naamCategorie, null).done(function (response) {
+                 $(dropdownId).val(response[0].id);
+             }).fail(function (error) {
+                 alert(error.StatusText);
+             });
+    }
 }
 
 
